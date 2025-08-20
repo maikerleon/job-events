@@ -1,0 +1,1 @@
+<div class="bg-base-100 border-base-300 p-6">Diseño</div>
