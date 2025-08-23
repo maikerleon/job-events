@@ -1,11 +1,9 @@
 <script>
-    import { information } from '$lib/stores/event.js';
+    import Template from '$components/Template.svelte';
 </script>
 
-<div class="bg-red-400 w-7/12">
-    <span>{$information.name}</span>
-    <span>{$information.date}</span>
-    <span>{$information.time}</span>
-    <span>{$information.description}</span>
-    <span>{$information.url}</span>
+<div class="w-7/12 flex justify-center items-center">
+    <article class="w-[33rem] h-[40rem] rounded-md relative overflow-hidden">
+        <Template />        
+    </article>
 </div>

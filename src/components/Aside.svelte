@@ -10,7 +10,7 @@
 
 </script>
 
-<aside class="bg-zinc-700 rounded-xl p-5 w-5/12">
+<aside class="bg-zinc-700 rounded-xl p-5 w-5/12 h-fit">
     <div class="tabs tabs-lift">
         <label class="tab flex gap-1 items-center">
             <input type="radio" name="tabs" value="info" bind:group={tabSelected} />

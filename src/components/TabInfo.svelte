@@ -1,5 +1,12 @@
 <script>
     import { information } from '$lib/stores/event.js';
+    
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            $information.logo = URL.createObjectURL(file);
+        }
+    }
 </script>
 
 <section class="bg-base-100 border-base-300 p-6">
@@ -27,7 +34,7 @@
         
         <fieldset class="fieldset w-full">
             <legend class="fieldset-legend">Logo</legend>
-            <input type="file" class="file-input" id="logo" name="logo" accept="image/*" bind:value={$information.logo} />
+            <input type="file" class="file-input" id="logo" name="logo" accept="image/*" onchange={handleFileChange} />
             <label class="label" for="logo">Tamaño máximo 2MB</label>
         </fieldset>
         
