@@ -7,7 +7,7 @@
 
 <div class="w-full py-10">
     
-    <div class="flex w-full gap-10 max-w-7xl mx-auto">
+    <div class="flex w-full gap-10 max-w-7xl mx-auto items-start">
         <Preview />
         
         <Aside />

@@ -2,9 +2,11 @@
     import BookTypeIcon from '$icons/book-type';
     import PaletteIcon  from '$icons/palette';
     import UsersIcon  from '$icons/users';
+    import SendIcon from '$icons/send'
 	import TabDesign from '$components/TabDesign.svelte';
 	import TabGuest from '$components/TabGuest.svelte';
 	import TabInfo from '$components/TabInfo.svelte';
+	import TabSend from '$components/TabSend.svelte';
 
     let tabSelected = $state('info');
 
@@ -29,6 +31,12 @@
             <UsersIcon size={18} />
             Invitados
         </label>
+
+         <label class="tab flex gap-1 items-center">
+            <input type="radio" name="tabs" value="send" bind:group={tabSelected} />
+            <SendIcon size={18} />
+            Enviar
+        </label>
     </div>
 
     <div>
@@ -38,6 +46,8 @@
             <TabDesign />
         {:else if tabSelected === 'guests' }
             <TabGuest />
+        {:else if tabSelected === 'send' }
+            <TabSend />
         {/if}
     </div>
 

@@ -56,3 +56,5 @@ export const information = writable({
     borderWidth: 6
   }
 });
+
+export const guests = writable([]);
