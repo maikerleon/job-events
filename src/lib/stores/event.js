@@ -6,7 +6,12 @@ export const information = writable({
   time: '',
   description: '',
   logo: '',
-  url: '',
+  logo1: '',
+  logo2: '',
+  logo3: '',
+  logo4: '',
+  logo5: '',
+  address: '',
   design: {
  
     textColor: '#ffffff',

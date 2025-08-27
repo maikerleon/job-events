@@ -58,7 +58,7 @@
 
     <fieldset class="fieldset w-full">
       <legend class="fieldset-legend">Título (Y)</legend>
-      <input type="range" min="-700" max="300" step="1" bind:value={$information.design.titleY} />
+      <input type="range" min="-700" max="700" step="1" bind:value={$information.design.titleY} />
     </fieldset>
 
     <fieldset class="fieldset w-full">
@@ -78,22 +78,22 @@
 
     <fieldset class="fieldset w-full">
       <legend class="fieldset-legend">Hora (Y)</legend>
-      <input type="range" min="-300" max="300" step="1" bind:value={$information.design.timeY} />
+      <input type="range" min="-700" max="300" step="1" bind:value={$information.design.timeY} />
     </fieldset>
     
     <fieldset class="fieldset w-full">
       <legend class="fieldset-legend">Hora (X)</legend>
-      <input type="range" min="-300" max="300" step="1" bind:value={$information.design.timeX} />
+      <input type="range" min="-700" max="300" step="1" bind:value={$information.design.timeX} />
     </fieldset>
 
     <fieldset class="fieldset w-full">
       <legend class="fieldset-legend">Descripción (Y)</legend>
-      <input type="range" min="-300" max="300" step="1" bind:value={$information.design.descY} />
+      <input type="range" min="-700" max="300" step="1" bind:value={$information.design.descY} />
     </fieldset>
 
     <fieldset class="fieldset w-full">
       <legend class="fieldset-legend">Descripción (X)</legend>
-      <input type="range" min="-300" max="300" step="1" bind:value={$information.design.descX} />
+      <input type="range" min="-200" max="250" step="1" bind:value={$information.design.descX} />
     </fieldset>
 
     <fieldset class="fieldset w-full">

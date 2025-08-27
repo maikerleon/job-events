@@ -1,5 +1,10 @@
 <script>
   import { information } from '$lib/stores/event.js';
+  import { normalizeTime, to12h } from '$lib/utils/time.js';
+
+  function onBlur(e) {
+    $information.time = normalizeTime(e.target.value);
+  }
 
   const formatDate = (dateStr) => {
     const date = new Date(dateStr);
@@ -15,113 +20,164 @@
     return date.toLocaleTimeString("en-US", options);
   };
 
-  $: d = $information.design;
+  const defaultBg ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWVLYM6ORuOZS8fc-mKlPj-HkTPlINmsD_7Q&amp;s";
+  
+  const logoSlots = [
+    { key: 'logo1', x: 20 },
+    { key: 'logo2', x: 230 },
+    { key: 'logo3', x: 420 },
+    { key: 'logo4', x: 620 },
+    { key: 'logo5', x: 820 }
+  ];
 
-  const defaultBg = "https://img.lovepik.com/background/20211022/large/lovepik-technological-background-image_402010515.jpg";
 </script>
 
 <svg
+  id="invitacion"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 1280 1600"
   class="w-full h-full"
-  style={`--txt:${d.textColor};
-          --url:${d.urlColor};
-          --acc:${d.accentColor};
-          --stroke:${d.strokeColor};
-          --strokeW:${d.borderWidth};
-          --bg:${d.bgColor};
-          --txtOpacity:${d.textOpacity};
-          font-family:${d.fontFamily};`}
+  style={`--txt:${$information.design.textColor};
+          --url:${$information.design.urlColor};
+          --acc:${$information.design.accentColor};
+          --stroke:${$information.design.strokeColor};
+          --strokeW:${$information.design.borderWidth};
+          --bg:${$information.design.bgColor};
+          --txtOpacity:${$information.design.textOpacity};
+          font-family:${$information.design.fontFamily};`}
 >
-  <style>
-    .mask-fade-bottom-quick{ -webkit-mask-image:linear-gradient(#000 50%, #0000 100%); mask-image:linear-gradient(#000 50%, #0000); }
-    text{ fill: var(--txt); fill-opacity: var(--txtOpacity); }
-    .s0{ fill: var(--bg); }
-    .box-stroke{ fill:#0000; stroke: var(--stroke); stroke-width: var(--strokeW); paint-order: stroke fill markers; }
-    .box-accent{ fill: var(--acc); }
-  </style>
 
   <defs>
     <filter id="txtShadow" x="-50%" y="-50%" width="200%" height="200%">
       <feDropShadow
-        dx={d.shadowEnabled ? d.shadowOffsetX : 0}
-        dy={d.shadowEnabled ? d.shadowOffsetY : 0}
-        stdDeviation={d.shadowEnabled ? d.shadowBlur : 0}
-        flood-color={d.shadowColor}
-        flood-opacity={d.shadowEnabled ? 1 : 0}
+        dx={$information.design.shadowEnabled ? $information.design.shadowOffsetX : 0}
+        dy={$information.design.shadowEnabled ? $information.design.shadowOffsetY : 0}
+        stdDeviation={$information.design.shadowEnabled ? $information.design.shadowBlur : 0}
+        flood-color={$information.design.shadowColor}
+        flood-opacity={$information.design.shadowEnabled ? 1 : 0}
       />
     </filter>
   </defs>
 
-
-  <g id="background" style:opacity={d.bgOpacity}>
-    {#if d.bgMode === 'color'}
-      <rect class="s0" x="0" y="0" width="1280" height="1600" />
+  <g id="background" style:opacity={$information.design.bgOpacity}>
+    {#if $information.design.bgMode === 'color'}
+      <rect style="fill: var(--bg);" x="0" y="0" width="1280" height="1600" />
     {:else}
       <image
         href={$information.design.bgImage || defaultBg}
-        width={d.bgWidth}
-        height={d.bgHeight}
-        class="mask-fade-bottom-quick"
-        transform={`translate(${d.bgX},${d.bgY}) scale(${d.bgScale})`}
+        width={$information.design.bgWidth}
+        height={$information.design.bgHeight}
+        style="-webkit-mask-image:linear-gradient(#000 50%, #0000 100%); mask-image:linear-gradient(#000 50%, #0000);"
+        transform={`translate(${$information.design.bgX},${$information.design.bgY}) scale(${$information.design.bgScale})`}
         preserveAspectRatio="xMidYMid slice"
       />
     {/if}
   </g>
 
-  <g id="title" transform={`translate(${d.titleX},${d.titleY})`}>
-    <foreignObject x="0" y="-30" width="100%" height="100%">
-      <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full">
+<g id="logo1">
+  <foreignObject x="20" y="0" width="200" height="200" transform="matrix(1.25,0,0,1.10,0,0)">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full">
+      {#if $information.logo1}
+        <img src={$information.logo1} alt="Logo 1" />
+      {/if}
+    </div>
+  </foreignObject>
+</g>
+
+
+<g id="logo2">
+  <foreignObject x="230" y="0" width="200" height="200" transform="matrix(1.25,0,0,1.10,0,0)">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full">
+      {#if $information.logo2}
+        <img src={$information.logo2} alt="Logo 2" />
+      {/if}
+    </div>
+  </foreignObject>
+</g>
+
+<g id="logo3">
+  <foreignObject x="420" y="0" width="200" height="200" transform="matrix(1.25,0,0,1.10,0,0)">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full">
+      {#if $information.logo3}
+        <img src={$information.logo3} alt="Logo 3" />
+      {/if}
+    </div>
+  </foreignObject>
+</g>
+
+<g id="logo4">
+  <foreignObject x="620" y="0" width="200" height="200" transform="matrix(1.25,0,0,1.10,0,0)">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full">
+      {#if $information.logo4}
+        <img src={$information.logo4} alt="Logo 4" />
+      {/if}
+    </div>
+  </foreignObject>
+</g>
+
+<g id="logo5">
+  <foreignObject x="820" y="0" width="200" height="200" transform="matrix(1.25,0,0,1.10,0,0)">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full">
+      {#if $information.logo5}
+        <img src={$information.logo5} alt="Logo 5" />
+      {/if}
+    </div>
+  </foreignObject>
+</g>
+
+
+  <g id="title" transform={`translate(${$information.design.titleX},${$information.design.titleY})`}>
+    <foreignObject x="0" y={680} width="100%" height="100%">
+      <div xmlns="http://www.w3.org/1999/xhtml">
         <p
           class="text-wrap text-8xl text-center mt-8 max-w-10/12 mx-auto line-clamp-2"
-          style={`text-transform:${d.uppercase ? 'uppercase' : 'none'};
-                  color:${d.textColor};
-                  opacity:${d.textOpacity};
-                  text-shadow:${d.shadowEnabled ? `${d.shadowOffsetX}px ${d.shadowOffsetY}px ${d.shadowBlur}px ${d.shadowColor}` : 'none'};`}
+          style={`text-transform:${$information.design.uppercase ? 'uppercase' : 'none'};
+                  color:${$information.design.textColor};
+                  opacity:${$information.design.textOpacity};
+                  text-shadow:${$information.design.shadowEnabled ? `${$information.design.shadowOffsetX}px ${$information.design.shadowOffsetY}px ${$information.design.shadowBlur}px ${$information.design.shadowColor}` : 'none'};`}
         >
-          {$information.name || "Nombre del evento"}
+          <label for="name_event" class="cursor-alias">{$information.name || "Nombre del evento"}</label>
         </p>
       </div>
     </foreignObject>
   </g>
 
-
-  <g id="date" transform={`translate(${d.dateX},${d.dateY})`}>
-    <rect x="290" y="933.5" width="412" height="99.4" rx={d.borderRadius} ry={d.borderRadius} class="box-stroke" />
+  <g id="date" transform={`translate(${$information.design.dateX},${$information.design.dateY})`}>
+    <rect x="290" y="933.5" width="412" height="99.4" rx={$information.design.borderRadius} ry={$information.design.borderRadius} style="fill:#0000; stroke: var(--stroke); stroke-width: var(--strokeW); paint-order: stroke fill markers;" />
     <text
-      filter={d.shadowEnabled ? "url(#txtShadow)" : null}
+      filter={$information.design.shadowEnabled ? "url(#txtShadow)" : null}
       text-anchor="middle"
       class="text-center text-6xl font-extralight tracking-widest"
-      style="transform: matrix(1, 0, 0, 1, 500, 1005);"
+      style="transform: matrix(1, 0, 0, 1, 500, 1005); fill: var(--txt); fill-opacity: var(--txtOpacity);"
     >
       {$information.date ? formatDate($information.date) : formatDate(new Date())}
     </text>
   </g>
 
  
-  <g id="time" transform={`translate(${d.timeX},${d.timeY})`}>
-    <rect x="745" y="933" width="245" height="100" rx={d.borderRadius} ry={d.borderRadius} class="box-accent" />
+  <g id="time" transform={`translate(${$information.design.timeX},${$information.design.timeY})`}>
+    <rect x="745" y="933" width="245" height="100" rx={$information.design.borderRadius} ry={$information.design.borderRadius} style="fill: var(--acc);" />
     <text
-      filter={d.shadowEnabled ? "url(#txtShadow)" : null}
+      filter={$information.design.shadowEnabled ? "url(#txtShadow)" : null}
       text-anchor="middle"
       class="text-center text-5xl font-extralight tracking-widest"
-      style="transform: matrix(1, 0, 0, 1, 870, 1000);"
+      style="transform: matrix(1, 0, 0, 1, 870, 1000); fill: var(--txt); fill-opacity: var(--txtOpacity);"
     >
       {$information.time ? formatTime($information.time) : formatTime()}
     </text>
   </g>
 
-
-  <g id="description" transform={`translate(${d.descX},${d.descY})`}>
+  <g id="description" transform={`translate(${$information.design.descX},${$information.design.descY})`}>
     <foreignObject x="0" y="1100" width="100%" height="100%">
       <div xmlns="http://www.w3.org/1999/xhtml">
         <p
           class="text-wrap font-extralight italic text-5xl text-center mt-5 max-w-4/5 mx-auto line-clamp-3"
-          style={`color:${d.textColor};
-                  opacity:${d.textOpacity};
-                  text-shadow:${d.shadowEnabled ? `${d.shadowOffsetX}px ${d.shadowOffsetY}px ${d.shadowBlur}px ${d.shadowColor}` : 'none'};`}
+          style={`color:${$information.design.textColor};
+                  opacity:${$information.design.textOpacity};
+                  text-shadow:${$information.design.shadowEnabled ? `${$information.design.shadowOffsetX}px ${$information.design.shadowOffsetY}px ${$information.design.shadowBlur}px ${$information.design.shadowColor}` : 'none'};
+                  white-space: pre-wrap;`}
         >
-          {$information.description || "Descripción del evento"}
+          <label for="description_event" class="cursor-alias">{$information.description || "Descripción del evento"}</label>
         </p>
       </div>
     </foreignObject>
@@ -129,20 +185,23 @@
 
   <g id="logo">
     <foreignObject x="420" y="930" width="200" height="200" transform="matrix(1.25,0,0,1.35,0,0)">
-      <div class="flex justify-center items-center h-full w-full">
-        <img src={$information.logo || 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Coca-Cola_logo_white.png'} alt="Logo del evento">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full">
+        <label for="logo_principal" class="cursor-alias">
+          <img src={$information.logo || 'https://ceascoahuila.gob.mx/wp-content/uploads/2024/02/Coahuila_Blanco-1024x295.png'} alt="Logo del evento" />
+        </label>
       </div>
     </foreignObject>
   </g>
 
-  <g id="web" transform={`translate(${d.webX},${d.webY})`}>
+  <g id="web" transform={`translate(${$information.design.webX},${$information.design.webY})`}>
     <text
-      filter={d.shadowEnabled ? "url(#txtShadow)" : null}
+      filter={$information.design.shadowEnabled ? "url(#txtShadow)" : null}
       text-anchor="middle"
       class="text-5xl font-light tracking-widest"
-      style="transform: matrix(0.961, 0, 0, 0.53, 640, 1550); fill: var(--url);"
+      style="transform: matrix(0.961, 0, 0, 0.87, 640, 1550); fill: var(--url); fill: var(--txt); fill-opacity: var(--txtOpacity);"
     >
-      {$information.url || "www.ejemplo.com"}
+      {$information.address || "Dirección del evento"}
     </text>
   </g>
+
 </svg>
