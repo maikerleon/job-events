@@ -3,5 +3,5 @@
     const { invite, guest } = data;
 </script>
 
-{invite}
+{JSON.stringify(invite)}
 {guest}
