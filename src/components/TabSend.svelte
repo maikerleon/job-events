@@ -49,17 +49,18 @@
         subject,
         message,
         guests: $guests.map(g => ({ name: g.name, email: g.email })),
-        html
+        html,
+        information: $information
       };
 
       const res = await fetch('/api/send-invites', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
       
       const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || 'Fallo el envío');
+      console.log(data);
 
       alert(`¡Listo! Se enviaron ${data.sent} invitaciones.`);
     } catch (e) {
@@ -109,8 +110,7 @@
         <MailIcon size={18} />
       </button>
     {/if}
-    <button onclick={() => generateImage('invitacion', `Invitación a ${$information.name}`)} class="cursor-pointer absolute">Descargar</button>
-
+    <!-- <button onclick={() => generateImage('invitacion', `Invitación a ${$information.name}`)} class="cursor-pointer absolute">Descargar</button> -->
   </div>
 
 </section>
