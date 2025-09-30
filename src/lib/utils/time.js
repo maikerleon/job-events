@@ -5,7 +5,7 @@ export const normalizeTime = (s) => {
     const t = s.padStart(4, "0");
     return t.slice(0, 2) + ":" + t.slice(2);
   }
-  return s; // ya viene como HH:MM
+  return s; 
 };
 
 export const to12h = (hhmm) => {

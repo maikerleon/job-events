@@ -76,7 +76,7 @@
 
 <g id="logo1">
   <foreignObject x="20" y="0" width="200" height="200" transform="matrix(1.25,0,0,1.10,0,0)">
-    <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full scale-75">
       {#if $information.logo1}
         <img src={$information.logo1} alt="Logo 1" />
       {/if}
@@ -87,7 +87,7 @@
 
 <g id="logo2">
   <foreignObject x="230" y="0" width="200" height="200" transform="matrix(1.25,0,0,1.10,0,0)">
-    <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-40 ">
       {#if $information.logo2}
         <img src={$information.logo2} alt="Logo 2" />
       {/if}
@@ -185,7 +185,7 @@
 
   <g id="logo">
     <foreignObject x="420" y="930" width="200" height="200" transform="matrix(1.25,0,0,1.35,0,0)">
-      <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full">
+      <div xmlns="http://www.w3.org/1999/xhtml" class="flex justify-center items-center h-full w-full scale-75">
         <label for="logo_principal" class="cursor-alias">
           <img src={$information.logo || 'https://ceascoahuila.gob.mx/wp-content/uploads/2024/02/Coahuila_Blanco-1024x295.png'} alt="Logo del evento" />
         </label>
@@ -193,15 +193,24 @@
     </foreignObject>
   </g>
 
+
+
   <g id="web" transform={`translate(${$information.design.webX},${$information.design.webY})`}>
+    
     <text
       filter={$information.design.shadowEnabled ? "url(#txtShadow)" : null}
       text-anchor="middle"
       class="text-5xl font-light tracking-widest"
       style="transform: matrix(0.961, 0, 0, 0.87, 640, 1550); fill: var(--url); fill: var(--txt); fill-opacity: var(--txtOpacity);"
-    >
-      {$information.address || "Dirección del evento"}
+    > {$information.address || "Dirección del evento"}
     </text>
+  
   </g>
 
+
+  
+
+
+
+  
 </svg>

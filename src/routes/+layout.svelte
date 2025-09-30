@@ -8,7 +8,7 @@
 <div class="flex flex-col w-full min-h-dvh">
     <header class="bg-teal-400 shadow-sm px-8 h-12 flex items-center text-zinc-900">
         <h1 class="text-2xl font-medium">
-            Invita
+            Invitation
         </h1>
     </header>
 
