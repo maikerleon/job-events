@@ -52,7 +52,7 @@
 
       {#if $information.logo}
         <div class="mt-2 flex items-center gap-2">
-          <img src={$information.logo} alt="Logo principal" class="h-12 object-contain m-8 border rounded scale-70" />
+          <img src={$information.logo} alt="Logo principal" class="h-12 object-contain m-8 border rounded scale-90" />
           <button type="button"
                   class="btn btn-error btn-xs"
                   onclick={() => clearLogo('logo')}>
