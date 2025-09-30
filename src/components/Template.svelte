@@ -44,7 +44,8 @@
           --strokeW:${$information.design.borderWidth};
           --bg:${$information.design.bgColor};
           --txtOpacity:${$information.design.textOpacity};
-          font-family:${$information.design.fontFamily};`}
+          font-family:${$information.design.fontFamily};
+          --titleFont:${$information.design.titleFontFamily || 'inherit'};`}
 >
 
   <defs>
@@ -134,7 +135,8 @@
           style={`text-transform:${$information.design.uppercase ? 'uppercase' : 'none'};
                   color:${$information.design.textColor};
                   opacity:${$information.design.textOpacity};
-                  text-shadow:${$information.design.shadowEnabled ? `${$information.design.shadowOffsetX}px ${$information.design.shadowOffsetY}px ${$information.design.shadowBlur}px ${$information.design.shadowColor}` : 'none'};`}
+                  text-shadow:${$information.design.shadowEnabled ? `${$information.design.shadowOffsetX}px ${$information.design.shadowOffsetY}px ${$information.design.shadowBlur}px ${$information.design.shadowColor}` : 'none'};
+                  font-family: var(--titleFont), ${$information.design.fontFamily || 'sans-serif'};`}
         >
           <label for="name_event" class="cursor-alias">{$information.name || "Nombre del evento"}</label>
         </p>
