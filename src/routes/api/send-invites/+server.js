@@ -36,6 +36,8 @@ export async function POST({ request }) {
         return json({ success: false, error: error.message });
     }
 
+    // Enviar correos
+
     return json({ success: true, data });
 
 }

@@ -25,7 +25,7 @@
     return true;
   };
 
-    function getInvitationHTML() {
+  function getInvitationHTML() {
     if (!browser) return '';
     const svg = document.getElementById('invitacion') || document.querySelector('svg');
     if (!svg) return '';
@@ -36,8 +36,7 @@
     html = html.replace(/\b(xlink:href|href|src)="([^"]*)"/gi,
         (m, attr, val) => `${attr}="${val.replace(/&(?!amp;|lt;|gt;|quot;|apos;)/g, '&amp;')}"`);
     return html;
-    }
-
+  }
 
   async function onSend() {
     if (!validateData()) return;
@@ -60,17 +59,14 @@
       });
       
       const data = await res.json();
-      console.log(data);
 
       alert(`¡Listo! Se enviaron ${data.sent} invitaciones.`);
     } catch (e) {
-      console.error(e);
       error = e.message || 'Error al enviar';
     } finally {
       sending = false;
     }
   }
-
  
 </script>
 
